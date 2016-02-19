@@ -15,7 +15,8 @@ Configuration
 
 
 Python scripts that can run on its own.
-- main application:   main.py
+- main application:   main.py   (run with python3)
+  to run in debug mode type "python3 main.py d""
 - main evaluation:    evaluation.py
   based on testset
 
