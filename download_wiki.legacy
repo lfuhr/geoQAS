@@ -1,0 +1,44 @@
+"""
+This file was used to download wikipedia pages.
+"""
+import nltk, os, wikipedia
+import wn_dictionary; from wn_dictionary import wn_lexicon
+
+if __name__ != "__main__": print("don't import"); raise Exception
+
+_script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+_download_dir = os.path.join(_script_dir, "wiki_pages", "full_text_user_selected")
+
+
+def _save(key, content):
+    filename = key.replace(" ","_").lower()
+    file_ = open(os.path.join(_download_dir, filename),"w")
+    file_.write(content)
+
+def _lookup(key, save_name):
+    try:
+        content = wikipedia.page(key).content
+        _save(save_name, content)
+
+    except wikipedia.exceptions.DisambiguationError as e:
+        print(str(list(enumerate(e.options))))
+        entry = input("Select article: ")
+        
+        try :
+            disamb = e.options[int(entry)]
+        except ValueError :
+            disamb = entry
+        _lookup(disamb, save_name)
+
+    except wikipedia.exceptions.PageError:
+        pass
+
+for key in wn_lexicon:
+    print(); print("searching: " + key)
+
+    #skip already downloaded
+    if os.path.isfile(os.path.join(_download_dir, key.replace(" ","_").lower())):
+        print("skip: " + key)
+        continue
+    
+    _lookup(key, key)

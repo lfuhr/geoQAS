@@ -1,0 +1,46 @@
+"""
+This file was used to download date from thefreedictionary
+"""
+import wn_dictionary; from wn_dictionary import wn_lexicon
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
+import os, time
+
+if __name__ != "__main__": print("don't import"); raise Exception
+
+_script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+_download_dir = os.path.join(_script_dir, "dict_pages", "full")
+
+def getFreeDicText(word):
+    url = "http://www.thefreedictionary.com/"+word.replace(' ', '+')  
+    html = urlopen(url).read() 
+    soup = BeautifulSoup(html,'html.parser')
+    definition = soup.find(id="Definition")
+    ds_lists = definition(attrs={ "class" : "ds-list" })
+    text = ' '.join(a.getText(separator=' ') for a in ds_lists)
+    return text
+
+def _save(key, content):
+    filename = key.replace(" ","_").lower()
+    file_ = open(os.path.join(_download_dir, filename),"w")
+    file_.write(content)
+
+content = ""
+with open("/Users/Ludwig/Desktop/1.txt") as f:
+    filelns = f.readlines()
+
+for key in filelns:#wn_lexicon:
+    key = key.lower()
+    try:
+        time.sleep(3)
+        print()
+        print(key)
+        if os.path.isfile(os.path.join(_download_dir, key.replace(" ","_"))):
+            print("skip: " + key)
+            continue
+        else:
+            _save(key, getFreeDicText(key))
+            print("ok")        
+    except Exception as e:
+        print(e)
+
