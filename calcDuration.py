@@ -7,8 +7,8 @@ blratio_car = 1.5
 blratio_pedestrian = 1.4
 
 def minutes_it_takes(distance, vehicle):
-    if vehicle == "car": return distance * blratio_car / v_car
-    elif vehicle == "pedestrian": return distance * blratio_pedestrian / v_pedestrian
+    if vehicle == "car": return distance * blratio_car * 60 / v_car
+    elif vehicle == "pedestrian": return distance * blratio_pedestrian * 60 / v_pedestrian
     else: raise Exception("Unknown vehicle", vehicle)
 
 def minutes_it_takes_string(vehicle) :
