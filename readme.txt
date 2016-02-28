@@ -19,6 +19,8 @@ Python scripts that can run on its own.
   to run in debug mode type "python3 main.py d""
 - main evaluation:    evaluation.py
   based on testset
+- common knowledge evaluation/comparison: models_testing.py
+  requires downloading the Google News Model (https://docs.google.com/file/d/0B7XkCwpI5KDYaDBDQm1tZGNDRHc/edit) into the folder 'models'
 
 
 Sets of Questions in questions.py
@@ -29,8 +31,9 @@ Sets of Questions in questions.py
 
 Common knowledge
 We use two approaches for common knowledge
-- Looking up in Wikipedia / thefreedictionary  → located in folder common_knowledge
-- Using word2vec
+- Looking up in Wikipedia / thefreedictionary  → located in folder 'common_knowledge'
+- Using word2vec (trained model from Google News in folder 'models')
+- Wikipedia is used in the main program as it had the best accuracy
 
 
 The Tagset used by NLTK is the one from penn treebank. We exteded it with INO, for the preposition "of"

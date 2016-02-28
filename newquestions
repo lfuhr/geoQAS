@@ -1,0 +1,34 @@
+=============== normal questions =========================
+# working
+Is there an Irish pub in Passau? # but only looks for pubs
+Is there a parking near Universität Passau?
+Which universities are in a range of 100 km from Passau? # faculties seem to be universities too
+
+# not working
+Where is Passau's town hall?
+What is the nearest station?
+Does Passau have a place named Shamrock?
+Which doctors are there in Passau?
+How many different shops does Passau have?
+Which restaurants sell Pizza in Passau?
+
+# no data
+Which rivers are in Passau?
+
+================ word2vec ================================
+# working
+Where can I buy bread in Passau?
+Where can I withdraw money in Passau?
+Where can I grab a coffee in Passau?
+
+# not working
+Is there a place in Passau where i can go swimming?
+At which places can I buy clothes in Passau?
+At how many places can I grab a coffee in Passau?
+What is the nearest place in Passau to buy a medicine?
+Can I park my car in range of 1 km from Cineplex in Passau?
+
+# wrong classification
+Where can I do sports in Passau?
+Where can I get my hair cut in Passau?
+Where can I buy a phone contract in Passau?
